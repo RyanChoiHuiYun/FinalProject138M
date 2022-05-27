@@ -7,11 +7,10 @@
 % STIMULI - images
 % unzip the images and store them in corresponding folders
 mkdir("stimuli\faces\neutral");
-addpath("stimuli\faces\neutral");
 mkdir("stimuli\faces\angry");
-addpath("stimuli\faces\angry");
 unzip("stimuli\faces\neutral.zip", "stimuli\faces\neutral");
 unzip("stimuli\faces\angry.zip", "stimuli\faces\angry");
+add
 % randomize choice from neutral or angry
 s = 1:24;
 s = s(randperm(length(s)));
@@ -131,8 +130,6 @@ for i = 1:24
         rt = toc;
         delete(t1);
     end
-    % Collect data and save them in trial_matrix
-    % TODO
 end
 
 
