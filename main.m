@@ -32,6 +32,7 @@ a = dir("stimuli\faces\angry");
 a(1) = [];
 a(1) = [];
 a = a(randperm(length(a)));
+scale = [400, 400];
 % STIMULI - words
 % load the words
 load("stimuli\words\words.mat");
@@ -57,6 +58,7 @@ fprintf("Welcome to the lexical decision task with primed faces." + ...
     "\nIn each trial, a random neutral or angry face will be briefly shown " + ...
     "before prompting a word or a non-word for you to answer." + ...
     "\nPlease press F for words, J for non-words." + ...
+    "\nPress C if you want to end the trial." + ...
     "\nMake your response as fast and as accurate as you can.\n" + ...
     "Good luck!\n");
 pause(0.5);
@@ -82,8 +84,9 @@ for i = 1:24
         cond_face = 0;
         figure;
         img = imread(n(1).name);
+        img = imresize(img, scale);
         imshow(img);
-        pause(0.5);
+        pause(0.25);
         close("all");
         n(1) = [];
         % words
@@ -109,6 +112,9 @@ for i = 1:24
             elseif b == 106 % J = nonword = 0
                 resp = 0;
                 valid_key = 1;
+            elseif b == 99  % C = break
+                resp = 2;
+                valid_key = 1;
             end        
         end
         rt = toc;
@@ -119,8 +125,9 @@ for i = 1:24
         cond_face = 1;
         figure;
         img = imread(a(1).name);
+        img = imresize(img, scale);
         imshow(img);
-        pause(0.5);
+        pause(0.25);
         close("all");
         a(1) = [];
         % words
@@ -146,10 +153,16 @@ for i = 1:24
             elseif b == 106 % J = nonword = 0
                 resp = 0;
                 valid_key = 1;
+            elseif b == 99  % C = break
+                resp = 2;
+                valid_key = 1;
             end        
         end
         rt = toc;
         delete(t1);
+    end
+    if resp == 2
+        break
     end
     % Collect data and save them in trial_matrix
     trial_matrix(i, 1) = i;
@@ -159,23 +172,12 @@ for i = 1:24
     trial_matrix(i, 5) = rt;
     trial_matrix(i, 6) = cond_word == resp;
     % Save output to the file
-    save(output_file, "trial_matrix", "column_names");
+    save("output/"+output_file, "trial_matrix", "column_names");
     pause(1);
 
 end
 close("all");
 fprintf("Thank you for your participation.\nGoodbye!");
-% end of region
-% -------------
-
-% start of region
-% ---------------
-%%%%%%%%%%%%
-% Analysis %
-%%%%%%%%%%%%
-% load(output_file);
-% TODO
-%
 % end of region
 % -------------
 
@@ -189,5 +191,31 @@ fprintf("Deleting necessary stimuli and folders...\n");
 rmdir("stimuli\faces\angry", 's');
 rmdir("stimuli\faces\neutral", 's');
 fprintf("\nDone.\n");
+% end of region
+% -------------
+
+% start of region
+% ---------------
+%%%%%%%%%%%%
+% Analysis %
+%%%%%%%%%%%%
+% load(output_file);
+% TODO
+% s = 01;
+% 
+% fnames = dir(['motion2_task_' num2str(s) '_*']);
+% 
+% TabA = table(); % TabA : table for all blocks
+% 
+% for b = 1:size(fnames)
+% 
+%     load(fnames(b).name);
+%     %TabS : table for single block
+%     TabS = table(repmat(dat.block,dat.ntrials,1),dat.motionCoh',dat. motionDir', dat.acc', dat.conf',dat.resp',dat.rtchoice', dat.rtconf','VariableNames', {'block','motionCoherence','motionDirection','accuracy','confidence','directionDetected','RTchoice','RTconfidence'}); %RT: reaction time
+%     TabA = [TabA; TabS];
+%     save(['motion2_task_' num2str(s) '.mat'],'TabA');
+% end
+%
+%
 % end of region
 % -------------
