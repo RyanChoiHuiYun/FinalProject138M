@@ -184,12 +184,14 @@ fprintf("Thank you for your participation.\nGoodbye!");
 % start of region
 % ---------------
 %%%%%%%%%%%%%%
-% Conclusion %
+% Clear %
 %%%%%%%%%%%%%%
 % remove and delete all images and folders created for the script
-fprintf("Deleting necessary stimuli and folders...\n");
+clc;
+fprintf("\nDeleting necessary stimuli and folders...\n");
 rmdir("stimuli\faces\angry", 's');
 rmdir("stimuli\faces\neutral", 's');
 fprintf("\nDone.\n");
+clear;
 % end of region
 % -------------
