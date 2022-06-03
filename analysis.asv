@@ -1,0 +1,30 @@
+% load all .mat files from output
+fnames = dir("output/*.mat");
+% for i = 1:length(files)
+%     load("output/"+files(i).name);
+% end
+
+% Wei:
+s = 01;
+
+% fnames = dir(['motion2task' num2str(s) '_*']);
+
+TabA = table(); % TabA : table for all blocks
+
+for b = 1:size(fnames)
+
+    load("output/"+fnames(1).name);
+    %TabS : table for single block
+    TabS = table(repmat(dat.block,dat.ntrials,1),dat.motionCoh',dat. motionDir', dat.acc', dat.conf',dat.resp',dat.rtchoice', dat.rtconf','VariableNames', {'block','motionCoherence','motionDirection','accuracy','confidence','directionDetected','RTchoice','RTconfidence'}); %RT: reaction time
+    TabA = [TabA; TabS];
+    save(['motion2task' num2str(s) '.mat'],'TabA');
+end
+
+
+
+%Computing the mean response time for each condition
+meanRT_cond1 = mean(trial_matrix(trial_matrix(:,2)==1,3));
+meanRT_cond0 = mean(trial_matrix(trial_matrix(:,2)==0,3));
+
+%Runnning and outputting the results of a two-sample ttest
+[h,p,ci,stat] = ttest(meanRT_cond1, meanRT_cond0)

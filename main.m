@@ -193,29 +193,3 @@ rmdir("stimuli\faces\neutral", 's');
 fprintf("\nDone.\n");
 % end of region
 % -------------
-
-% start of region
-% ---------------
-%%%%%%%%%%%%
-% Analysis %
-%%%%%%%%%%%%
-% load(output_file);
-% TODO
-% s = 01;
-% 
-% fnames = dir(['motion2_task_' num2str(s) '_*']);
-% 
-% TabA = table(); % TabA : table for all blocks
-% 
-% for b = 1:size(fnames)
-% 
-%     load(fnames(b).name);
-%     %TabS : table for single block
-%     TabS = table(repmat(dat.block,dat.ntrials,1),dat.motionCoh',dat. motionDir', dat.acc', dat.conf',dat.resp',dat.rtchoice', dat.rtconf','VariableNames', {'block','motionCoherence','motionDirection','accuracy','confidence','directionDetected','RTchoice','RTconfidence'}); %RT: reaction time
-%     TabA = [TabA; TabS];
-%     save(['motion2_task_' num2str(s) '.mat'],'TabA');
-% end
-%
-%
-% end of region
-% -------------
