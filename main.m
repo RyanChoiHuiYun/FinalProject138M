@@ -183,9 +183,9 @@ fprintf("Thank you for your participation.\nGoodbye!");
 
 % start of region
 % ---------------
-%%%%%%%%%%%%%%
+%%%%%%%%%
 % Clear %
-%%%%%%%%%%%%%%
+%%%%%%%%%
 % remove and delete all images and folders created for the script
 clc;
 fprintf("\nDeleting necessary stimuli and folders...\n");
