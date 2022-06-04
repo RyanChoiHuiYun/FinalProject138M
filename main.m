@@ -12,30 +12,30 @@
 % unzip the images and store them in corresponding folders
 fprintf("Loading necessary stimuli and creating folders...\n");
 mkdir stimuli/faces neutral;
-addpath("stimuli\faces\neutral");
+addpath("stimuli/faces/neutral");
 mkdir stimuli/faces angry;
-addpath("stimuli\faces\angry");
-unzip("stimuli\faces\neutral.zip", "stimuli\faces\neutral");
-unzip("stimuli\faces\angry.zip", "stimuli\faces\angry");
+addpath("stimuli/faces/angry");
+unzip("stimuli/faces/neutral.zip", "stimuli/faces/neutral");
+unzip("stimuli/faces/angry.zip", "stimuli/faces/angry");
 fprintf("\nDone.\n");
 pause(0.5);
 % randomize choice from neutral or angry
 s = 1:24;
 s = s(randperm(length(s)));
 % randomize neutral order
-n = dir("stimuli\faces\neutral");
+n = dir("stimuli/faces/neutral");
 n(1) = [];
 n(1) = [];
 n = n(randperm(length(n)));
 % randomize angry order
-a = dir("stimuli\faces\angry");
+a = dir("stimuli/faces/angry");
 a(1) = [];
 a(1) = [];
 a = a(randperm(length(a)));
 scale = [400, 400];
 % STIMULI - words
 % load the words
-load("stimuli\words\words.mat");
+load("stimuli/words/words.mat");
 % randomize choice from words or non-words
 k = 1:24;
 k = k(randperm(length(k)));
@@ -189,8 +189,8 @@ fprintf("Thank you for your participation.\nGoodbye!");
 % remove and delete all images and folders created for the script
 clc;
 fprintf("\nDeleting necessary stimuli and folders...\n");
-rmdir("stimuli\faces\angry", 's');
-rmdir("stimuli\faces\neutral", 's');
+rmdir("stimuli/faces/angry", 's');
+rmdir("stimuli/faces/neutral", 's');
 fprintf("\nDone.\n");
 clear;
 % end of region
