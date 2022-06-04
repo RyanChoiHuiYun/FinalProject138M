@@ -11,9 +11,9 @@
 % STIMULI - images
 % unzip the images and store them in corresponding folders
 fprintf("Loading necessary stimuli and creating folders...\n");
-mkdir("stimuli\faces\neutral");
+mkdir stimuli/faces neutral;
 addpath("stimuli\faces\neutral");
-mkdir("stimuli\faces\angry");
+mkdir stimuli/faces angry;
 addpath("stimuli\faces\angry");
 unzip("stimuli\faces\neutral.zip", "stimuli\faces\neutral");
 unzip("stimuli\faces\angry.zip", "stimuli\faces\angry");
