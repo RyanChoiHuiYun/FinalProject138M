@@ -9,4 +9,4 @@ for i = 1:length(fnames)
 end
 
 %Runnning and outputting the results of a two-sample ttest
-[h,p,ci,stat] = ttest(meanRT_cond1, meanRT_cond0)
+[h,p,ci,stat] = ttest(meanRT_cond1, meanRT_cond0);
