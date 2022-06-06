@@ -27,6 +27,17 @@ end
 
 
 %Computing the mean response time for each condition
+total_neutral_avg = mean(meanRT_cond0);
+total_angry_avg = mean(meanRT_cond1);
+x = categorical({'neutral', 'angry'});
+y = [total_neutral_avg; total_angry_avg];
+b = bar(x,y);
+b.FaceColor = 'flat';
+b.CData(2,:) = [0 0 1];
+b.CData(1,:) = [1 0 0];
+title("average response time per condition");
+xlabel("condition");
+ylabel("response time (s)");
 
 %Runnning and outputting the results of a two-sample ttest
 [h,p,ci,stat] = ttest(meanRT_cond1, meanRT_cond0)
