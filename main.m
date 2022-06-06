@@ -2,6 +2,7 @@
 % xcai30@ucsc.edu
 
 % PSYC 138P Final Project: Lexical Decision Task with Primed Faces
+% All images in stimuli/ is from https://faces.mpdl.mpg.de/imeji/
 
 % start of region
 % ---------------

@@ -1,8 +1,9 @@
 % load all .mat files from output
 fnames = dir("output/*.mat");
 for i = 1:length(fnames)
-    load("output/"+fnames(i).name);
-    name = fnames(i).name
+    name = fnames(i).name;
+    load("output/"+name);
+    scatter_name = name(end-5:end-4);
 
     matrix(:,:,i) = trial_matrix;
     %Computing the mean response time for each condition
@@ -20,7 +21,7 @@ for i = 1:length(fnames)
 
     figure; 
     scatter(trial_matrix(:,1),trial_matrix(:,5), [], cmap)
-    title(name);
+    title("Lexical Data from "+scatter_name);
     xlabel("Trial Number");
     ylabel("Response Time");
 end
@@ -31,6 +32,7 @@ total_neutral_avg = mean(meanRT_cond0);
 total_angry_avg = mean(meanRT_cond1);
 x = categorical({'neutral', 'angry'});
 y = [total_neutral_avg; total_angry_avg];
+figure;
 b = bar(x,y);
 b.FaceColor = 'flat';
 b.CData(2,:) = [0 0 1];
