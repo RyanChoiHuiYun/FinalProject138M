@@ -25,7 +25,7 @@ for i = 1:length(fnames)
     xlabel("Trial Number");
     ylabel("Response Time");
 end
-
+disp("RED: angry, BLUE: neutral");
 
 %Computing the mean response time for each condition
 total_neutral_avg = mean(meanRT_cond0);
